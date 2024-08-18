@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #0d0d0d;
+            color: #00FF9C;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 30px;
+            background: #1a1a1a;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 255, 156, 0.5);
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #00FF9C;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: block;
+            color: #ffffff;
+        }
+
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 1rem;
+            width: 100%;
+            border: 1px solid #00FF9C;
+            border-radius: 6px;
+            background-color: #2a2a2a;
+            color: #ffffff;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #00ffd0;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #00FF9C;
+            color: #0d0d0d;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00ffd0;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        .result h2, .result h3 {
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .categories {
+            margin-top: 30px;
+        }
+
+        .categories h3 {
+            font-size: 1.3rem;
+            color: #00FF9C;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .categories ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .categories li {
+            font-size: 1.1rem;
+            margin: 5px 0;
+            color: #ffffff;
+        }
+
+        .categories li strong {
+            color: #00ffd0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BMI Calculator</h1>
+        <form method="POST">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" required>
+
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" name="height" required>
+
+            <button type="submit">Calculate BMI</button>
+        </form>
+        {% if bmi %}
+            <div class="result">
+                <h2>Your BMI is: {{ bmi }}</h2>
+                <h3>Category: {{ category }}</h3>
+            </div>
+        {% endif %}
+        <div class="categories">
+            <h3>BMI Categories:</h3>
+            <ul>
+                <li><strong>Underweight:</strong> BMI &lt; 18.5</li>
+                <li><strong>Normal weight:</strong> BMI 18.5 - 24.9</li>
+                <li><strong>Overweight:</strong> BMI 25 - 29.9</li>
+                <li><strong>Obesity:</strong> BMI 30 or higher</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
